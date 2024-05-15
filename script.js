@@ -17,16 +17,15 @@ function createGrid(gridLength) {
             div.addEventListener("mouseover", () => {
                 div.classList.toggle("rabble");
             })
+            
+            /* Chase the mouse
             div.addEventListener("mouseout", () => {
                 div.classList.toggle("rabble");
             })
+            */
             container.appendChild(div);
 
         }
-}
-
-function createHoverListener (element) {
-
 }
 
 createGrid(16);
