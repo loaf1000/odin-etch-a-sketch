@@ -6,10 +6,12 @@ const container = document.querySelector(".container");
 // 1024px x 1024px
 const containerLength = 1024;
 const buttonChanger = document.querySelector("#changer");
+const buttonRGB = document.querySelector("#rgbutton");
+let isRanRGB = false;
 
 function createGrid(gridLength) {
-    const squareLength = getPixelDimenions(gridLength);
-    const isRanRGB = true;
+    const squareLength = getPixelDimensions(gridLength);
+    
 
     for (let i = 0; i < gridLength * gridLength; i++)
         {
@@ -70,17 +72,27 @@ function getNumberOfSquares () {
    return sign;
 };
 
-function getPixelDimenions (numberOfSquares) {
+function getPixelDimensions (numberOfSquares) {
     const settingTemplate = "px";
-    let estimate = (containerLength / numberOfSquares) - 2;
+    const estimate = (containerLength / numberOfSquares) - 2;
 
     return estimate + settingTemplate;
 }
 
 buttonChanger.addEventListener("click", () => {
+    isRanRGB = false;
+    const numberOfSquares = getNumberOfSquares();
+    removeGrid();
+    createGrid(numberOfSquares);
+});
+
+buttonRGB.addEventListener("click", () => {
+    isRanRGB = true;
     const numberOfSquares = getNumberOfSquares();
     removeGrid();
     createGrid(numberOfSquares);
 });
 
 createGrid(16);
+
+
