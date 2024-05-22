@@ -7,11 +7,11 @@
     max-width: 1024px;
 }
 .pixel {
-    background-color: white;
-    border: 1px solid black;
+    background-color: black;
+    border: 1px solid white;
 }
 
 .rabble {
-    background-color: black;
-    border: 1px solid white;
+    background-color: white;
+    border: 1px solid black;
 }

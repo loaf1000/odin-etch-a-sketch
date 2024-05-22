@@ -7,7 +7,10 @@ const container = document.querySelector(".container");
 const containerLength = 1024;
 const buttonChanger = document.querySelector("#changer");
 const buttonRGB = document.querySelector("#rgbutton");
+const buttonOpacity = document.querySelector("#opacity");
 let isRanRGB = false;
+let isOpacity = false;
+let tint = 1.0;
 
 function createGrid(gridLength) {
     const squareLength = getPixelDimensions(gridLength);
@@ -25,7 +28,12 @@ function createGrid(gridLength) {
                     {
                         div.setAttribute("style", `background-color: ${randomRGB()}; border: 1px solid white; height: ${squareLength}; width: ${squareLength}`);
                     }
-                else if(false) {
+                else if(isOpacity) {
+                    if (tint > 0)
+                        {
+                            tint -= .1;
+                        }
+                    div.setAttribute("style", `opacity: ${tint}; height: ${squareLength}; width: ${squareLength}`);
 
                 }
                 else {
@@ -46,6 +54,9 @@ function createGrid(gridLength) {
 }
 
 function removeGrid () {
+    isRanRGB = false;
+    isOpacity = false;
+    tint = 1.0;
     while (container.firstChild)
         {
             container.removeChild(container.firstChild);
@@ -80,17 +91,24 @@ function getPixelDimensions (numberOfSquares) {
 }
 
 buttonChanger.addEventListener("click", () => {
-    isRanRGB = false;
     const numberOfSquares = getNumberOfSquares();
     removeGrid();
     createGrid(numberOfSquares);
 });
 
 buttonRGB.addEventListener("click", () => {
-    isRanRGB = true;
     const numberOfSquares = getNumberOfSquares();
     removeGrid();
     createGrid(numberOfSquares);
+    isRanRGB = true;
+    
+});
+
+buttonOpacity.addEventListener("click", () => {
+    const numberOfSquares = getNumberOfSquares();
+    removeGrid();
+    createGrid(numberOfSquares);
+    isOpacity = true;
 });
 
 createGrid(16);
