@@ -9,16 +9,28 @@ const buttonChanger = document.querySelector("#changer");
 
 function createGrid(gridLength) {
     const squareLength = getPixelDimenions(gridLength);
+    const isRanRGB = true;
 
     for (let i = 0; i < gridLength * gridLength; i++)
         {
             let div = document.createElement("div");
             div.setAttribute("class", "pixel");
             div.setAttribute("id", "pixel_" + i);
-            div.setAttribute("style", "height: " + squareLength + "; width: "+ squareLength);
+            div.setAttribute("style", `height: ${squareLength}; width: ${squareLength}`);
 
             div.addEventListener("mouseover", () => {
-                div.classList.toggle("rabble");
+                if (isRanRGB)
+                    {
+                        div.setAttribute("style", `background-color: ${randomRGB()}; border: 1px solid white; height: ${squareLength}; width: ${squareLength}`);
+                    }
+                else if(false) {
+
+                }
+                else {
+                    div.classList.toggle("rabble");
+                }
+
+                
             })
             
             /* Chase the mouse
@@ -37,6 +49,14 @@ function removeGrid () {
             container.removeChild(container.firstChild);
         }
 
+};
+
+function randomRGB() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red},${green},${blue})`;
 };
 
 function getNumberOfSquares () {
