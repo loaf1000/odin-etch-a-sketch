@@ -91,23 +91,20 @@ function getPixelDimensions (numberOfSquares) {
 }
 
 buttonChanger.addEventListener("click", () => {
-    const numberOfSquares = getNumberOfSquares();
     removeGrid();
-    createGrid(numberOfSquares);
+    createGrid(getNumberOfSquares());
 });
 
 buttonRGB.addEventListener("click", () => {
-    const numberOfSquares = getNumberOfSquares();
     removeGrid();
-    createGrid(numberOfSquares);
+    createGrid(getNumberOfSquares());
     isRanRGB = true;
     
 });
 
 buttonOpacity.addEventListener("click", () => {
-    const numberOfSquares = getNumberOfSquares();
     removeGrid();
-    createGrid(numberOfSquares);
+    createGrid(getNumberOfSquares());
     isOpacity = true;
 });
 
